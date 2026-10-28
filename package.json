@@ -1,0 +1,14 @@
+{
+  "name": "imovies-cinema-ticket-booking-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IMovies cinema ticket booking application",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n API,WEB -c red,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server",
+    "test": "npm test --prefix server",
+    "build": "npm run build --prefix client"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}

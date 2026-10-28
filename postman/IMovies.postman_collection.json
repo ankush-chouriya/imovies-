@@ -1,0 +1,27 @@
+{
+  "info": {
+    "name": "IMovies API",
+    "_postman_id": "f5b0ad80-7d7d-4caa-9dd4-1c8b2a2a40a7",
+    "description": "Postman requests for the IMovies cinema booking API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key":"baseUrl","value":"http://localhost:5000/api"},
+    {"key":"token","value":""},
+    {"key":"showId","value":""},
+    {"key":"bookingId","value":""}
+  ],
+  "item": [
+    {"name":"Health","request":{"method":"GET","url":"{{baseUrl}}/health"}},
+    {"name":"List movies","request":{"method":"GET","url":"{{baseUrl}}/movies"}},
+    {"name":"Register","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Demo User\",\"email\":\"demo@example.com\",\"password\":\"Password123!\"}"},"url":"{{baseUrl}}/auth/register"}},
+    {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"email\":\"user@imovies.local\",\"password\":\"User123!\"}"},"url":"{{baseUrl}}/auth/login"}},
+    {"name":"Current user","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/auth/me"}},
+    {"name":"List cinemas","request":{"method":"GET","url":"{{baseUrl}}/cinemas"}},
+    {"name":"List shows","request":{"method":"GET","url":"{{baseUrl}}/shows"}},
+    {"name":"Show seats","request":{"method":"GET","url":"{{baseUrl}}/shows/{{showId}}/seats"}},
+    {"name":"Create booking","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"showId\":\"{{showId}}\",\"selectedSeats\":[\"A1\",\"A2\"]}"},"url":"{{baseUrl}}/bookings"}},
+    {"name":"My bookings","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/bookings/mine"}},
+    {"name":"Cancel booking","request":{"method":"PATCH","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/bookings/{{bookingId}}/cancel"}}
+  ]
+}
